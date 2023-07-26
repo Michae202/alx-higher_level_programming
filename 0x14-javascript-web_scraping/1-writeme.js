@@ -1,10 +1,5 @@
 #!/usr/bin/node
-const fs = require('fs');
-const path = process.argv[2];
-const argms = process.argv[3];
 
-fs.writeFile(path, argms, function (err) {
-  if (err) {
-    console.log(err);
-  }
-});}
+process.on('uncaughtException', error => console.log(error));
+const fs = require('fs');
+fs.writeFileSync(process.argv[2], process.argv[3], 'utf8');
